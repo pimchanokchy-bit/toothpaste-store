@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DENTAPURE - ยาสีฟันสมุนไพรสูตรเข้มข้น</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Prompt', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <nav class="bg-teal-700 text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-wide">🦷 DENTAPURE</h1>
+      <a href="admin.html" class="bg-teal-900 hover:bg-teal-800 text-xs px-3 py-2 rounded-lg transition">
+        ระบบหลังบ้าน (แพ็คของ/ใบปะหน้า) →
+      </a>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-r from-teal-600 to-emerald-500 text-white py-12 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">ยิ้มมั่นใจ ไร้กลิ่นปาก ฟันขาวสะอาด</h2>
+      <p class="text-teal-50 text-lg mb-6">เลือกสูตรที่ใช่สำหรับคุณ ด้วยสารสกัดธรรมชาติแท้ 100%</p>
+      <a href="#order-section" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-8 py-3 rounded-full shadow-lg inline-block">สั่งซื้อเลยตอนนี้</a>
+    </div>
+  </header>
+
+  <section class="max-w-5xl mx-auto py-12 px-4">
+    <h3 class="text-2xl font-bold text-center mb-8 text-teal-800">เลือกสูตรยาสีฟัน (2 SKUs)</h3>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden border flex flex-col">
+        <img src="images/sku1.jpg" onerror="this.src='https://images.unsplash.com/photo-1559591937-e68214d00308?w=600'" class="w-full h-64 object-cover">
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded">SKU-01</span>
+            <h4 class="text-xl font-bold mt-2">สูตร Fresh Herbal (สมุนไพรเย็นสดชื่น)</h4>
+            <p class="text-slate-500 text-sm mt-2">ลดกลิ่นปากทันทีที่ใช้ ระงับแบคทีเรียยาวนาน 12 ชั่วโมง</p>
+          </div>
+          <div class="mt-6 flex items-center justify-between border-t pt-4">
+            <span class="text-2xl font-bold text-teal-700">฿159</span>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="updateQty(1, -1)" class="w-8 h-8 rounded-full bg-slate-200 font-bold">-</button>
+              <span id="qty-1" class="font-bold text-lg w-6 text-center">1</span>
+              <button type="button" onclick="updateQty(1, 1)" class="w-8 h-8 rounded-full bg-teal-600 text-white font-bold">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden border flex flex-col">
+        <img src="images/sku2.jpg" onerror="this.src='https://images.unsplash.com/photo-1628359355624-855775b5c9c4?w=600'" class="w-full h-64 object-cover">
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">SKU-02</span>
+            <h4 class="text-xl font-bold mt-2">สูตร Charcoal Whitening (ฟันขาว ลดคราบชา-กาแฟ)</h4>
+            <p class="text-slate-500 text-sm mt-2">ขจัดคราบพลัคและคราบเหลืองอย่างอ่อนโยนด้วยผงถ่านไม้ไผ่</p>
+          </div>
+          <div class="mt-6 flex items-center justify-between border-t pt-4">
+            <span class="text-2xl font-bold text-teal-700">฿189</span>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="updateQty(2, -1)" class="w-8 h-8 rounded-full bg-slate-200 font-bold">-</button>
+              <span id="qty-2" class="font-bold text-lg w-6 text-center">0</span>
+              <button type="button" onclick="updateQty(2, 1)" class="w-8 h-8 rounded-full bg-teal-600 text-white font-bold">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order-section" class="max-w-2xl mx-auto pb-16 px-4">
+    <div class="bg-white p-8 rounded-2xl shadow-lg border border-teal-100">
+      <h3 class="text-2xl font-bold text-teal-800 mb-6 text-center">สรุปรายการ & ข้อมูลจัดส่ง</h3>
+      <div class="bg-slate-50 p-4 rounded-xl mb-6 space-y-2 text-sm">
+        <div class="flex justify-between"><span>SKU-01 Fresh Herbal (฿159)</span><span id="summary-1" class="font-semibold">1 หลอด = ฿159</span></div>
+        <div class="flex justify-between"><span>SKU-02 Charcoal Whitening (฿189)</span><span id="summary-2" class="font-semibold">0 หลอด = ฿0</span></div>
+        <div class="flex justify-between text-lg font-bold text-teal-700 border-t pt-2 mt-2">
+          <span>ยอดชำระทั้งหมด (ส่งฟรี)</span><span id="total-price">฿159</span>
+        </div>
+      </div>
+      <form id="orderForm" class="space-y-4">
+        <div><label class="block text-sm font-medium mb-1">ชื่อ-นามสกุล ผู้รับ *</label><input type="text" id="custName" required class="w-full border rounded-lg p-3"></div>
+        <div><label class="block text-sm font-medium mb-1">เบอร์โทรศัพท์ *</label><input type="tel" id="custPhone" required class="w-full border rounded-lg p-3"></div>
+        <div><label class="block text-sm font-medium mb-1">ที่อยู่จัดส่ง (พร้อมรหัสไปรษณีย์) *</label><textarea id="custAddress" required rows="3" class="w-full border rounded-lg p-3"></textarea></div>
+        <button type="submit" id="submitBtn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 rounded-xl text-lg shadow-md">ยืนยันการสั่งซื้อ</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyeEPzolQ1kq2VnIgCy7tLh0m6T8fw0w20HQ63NrnQFW3k1F1cyVX9XPYaLxn5ClKBB/exec';
+    let qty1 = 1, qty2 = 0;
+    function updateQty(sku, change) {
+      if (sku === 1) qty1 = Math.max(0, qty1 + change);
+      if (sku === 2) qty2 = Math.max(0, qty2 + change);
+      document.getElementById('qty-1').innerText = qty1;
+      document.getElementById('qty-2').innerText = qty2;
+      document.getElementById('summary-1').innerText = `${qty1} หลอด = ฿${qty1 * 159}`;
+      document.getElementById('summary-2').innerText = `${qty2} หลอด = ฿${qty2 * 189}`;
+      document.getElementById('total-price').innerText = `฿${(qty1 * 159) + (qty2 * 189)}`;
+    }
+    document.getElementById('orderForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (qty1 === 0 && qty2 === 0) return alert('กรุณาเลือกสินค้าอย่างน้อย 1 ชิ้น');
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true; btn.innerText = 'กำลังบันทึกออเดอร์...';
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: 'create',
+            name: document.getElementById('custName').value,
+            phone: document.getElementById('custPhone').value,
+            address: document.getElementById('custAddress').value,
+            sku1: qty1, sku2: qty2, total: (qty1 * 159) + (qty2 * 189)
+          })
+        });
+        const result = await res.json();
+        if (result.status === 'success') {
+          alert(`สั่งซื้อสำเร็จ! รหัสออเดอร์: ${result.orderId}`);
+          document.getElementById('orderForm').reset();
+          qty1 = 1; qty2 = 0; updateQty(1, 0);
+        }
+      } catch (err) { alert('เชื่อมต่อผิดพลาด ตรวจสอบลิงก์ SCRIPT_URL'); }
+      finally { btn.disabled = false; btn.innerText = 'ยืนยันการสั่งซื้อ'; }
+    });
+  </script>
+</body>
+</html>
